@@ -1,0 +1,68 @@
+Marcelo Paulon 1411029 (3WB - Ana)
+Renan da Fonte 1412122 (3WB - Ana)
+
+Trabalho de Software Básico - Gravação compacta
+
+TESTES REALIZADOS:
+Foram realizados testes com diversos tipos de structs, tanto usando a ordenação Little Endian quanto usando a ordenação Big Endian. Os testes foram realizados com vetores de 5 ou 8 posições das seguintes structs:
+
+typedef struct charStruct {
+  char a;
+  char b;
+  char c;
+} CharStruct;
+
+typedef struct shortStruct {
+  short int a;
+  short int b;
+  short int c;
+} ShortStruct;
+
+typedef struct intStruct {
+  int a;
+  int b;
+  int c;
+  int d;
+} IntStruct;
+
+typedef struct completeStructure {
+  char a;
+  char b;
+  char c;
+  short int d;
+  short int e;
+  short int f;
+  int g;
+  int h;
+  int i;
+  int j;
+} CompleteStructure;
+
+typedef struct completeStructureScrambled {
+  char a;
+  int i;
+  short int b;
+  short int c;
+  char d;
+  short int e;
+  int f;
+  int g;
+  int h;
+  char j;
+} CompleteStructureScrambled;
+
+Estes testes possibilitaram testar as funções compacta e mostra, com diferentes combinações de padding, permitindo analisar e corrigir os problemas que apareceram nas primeiras versões criadas durante o trabalho. 
+
+O QUE ESTÁ FUNCIONANDO:
+Todas as structs testadas funcionaram sem qualquer problema. Foram inspecionados os arquivos gerados pela função compacta, e o output da função mostra ao ler estes arquivos.
+
+PROGRAMAS E AMBIENTES UTILIZADOS:
+
+- Mac OS X 10.9.5 x64 - GCC 4.2.1
+  Utilizada a ferramenta HexFiend para inspecionar o arquivo
+  Programa utilizado para a edição do texto: Sublime Text 2
+
+- Ubuntu 14.04LTS x64 - GCC 4.8.2
+  Utilizada a ferramenta hexdump para inspecionar o arquivo
+  Programa utilizado para a edição do código: gedit 3.10
+

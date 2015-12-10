@@ -1,0 +1,97 @@
+/* Renan da Fonte Simas dos Santos 1412122 3WB - Ana */
+/* Marcelo Paulon Jucá Vasconcelos 1411029 3WB - Ana */
+
+Trabalho de Software Básico - Gerador de Código Dinâmico
+
+TESTES REALIZADOS:
+Foram realizados testes com diversos tipos de funções SB, como, por exemplo, os trechos de códigos em SB disponíveis na página que enuncia o trabalho e versões modificadas dos mesmos, além de funções criadas por nós, que testaram o limite da quantidade de variáveis/parâmetros e de linhas de código. Exemplos de códigos testados:
+
+>> 00.sb
+ret
+
+>> 01.sb 
+v0 = p0 + $1
+ret
+
+>> 02.sb
+v0 = p1 + p2	// i = b + c
+v0 = p0 * v0	// i = a * i
+ret
+
+>> 03.sb
+v0 = $1 + $0 	// f = 1
+while p0	// while (n != 0)
+v0 = v0 * p0 	// f = f * n
+p0 = p0 - $1 	// n = n - 1
+end
+ret
+
+>> 04.sb
+v0 = $0 + $0 	// v = 0
+while p0
+v1 = p1 + $0    // i = y
+while v1
+v2 = p0 * v1    // x * i
+v0 = v0 + v2    // v += x * i
+v1 = v1 - $1	// i--
+end
+p0 = p0 - $1	// x--
+end
+ret
+
+>> 05.sb
+v0 = $0 + $0
+while p0
+v0 = v0 + $7
+p0 = p0 - $1	// x--
+end
+ret
+
+>> 06.sb
+
+v0 = $0 + $0
+while p0
+v0 = v0 + $7
+v1 = v0 + $7
+v2 = v1 + $7
+v3 = v2 + $7
+v4 = v3 + $7
+v5 = v4 + $7
+v6 = v5 + $7
+v7 = v6 + $7
+v7 = v6 + $7
+v8 = v7 + $7
+v9 = v8 + $7
+v0 = v9 + $0
+p0 = p0 - $1	// x--
+end
+ret
+
+>> 07.sb
+
+v0 = $10 + $0
+while v0
+v0 = v0 - $1	// x--
+end
+ret
+
+
+>> 08.sb
+
+while p0
+v0 = p0 + $0
+p0 = p0 - $1
+end
+ret
+
+Estes testes possibilitaram testar a tradução da linguagem SB pela função geracod, com diferentes combinações de posicionamento de while, variáveis locais e parâmetros, permitindo analisar e corrigir os problemas que apareceram nas primeiras versões criadas durante o trabalho. 
+
+O QUE ESTÁ FUNCIONANDO:
+Todas as funções SB testadas funcionaram sem qualquer problema. Foram testadas as funções geradas pelo programa através da comparação entre o resultado gerado pelo gerador de código dinâmico e o resultado gerado por uma função equivalente em C.
+
+PROGRAMAS E AMBIENTES UTILIZADOS:
+
+- Ubuntu 14.04LTS x64 - GCC 4.8.2
+  Utilizada a ferramenta objdump para inspecionar os arquivos .o
+  Programa utilizado para a edição do código: gedit 3.10
+  Outros programas utilizados: Teamviewer 10.0 e Skype para a realização do trabalho de forma colaborativa
