@@ -1,0 +1,36 @@
+Aula 2 - Laboratório
+
+1.a. O programa imprime, para o valor 10000, o endereço de memória em hexadecimal que o ponteiro passado (ponteiro de int) se refere, e imprime, byte a byte, começando do 1º byte do inteiro, o valor em hexadecimal (representação ASCII) desse byte. Como a arquitetura usada pelo compilador é Intel (IA-32), os bytes estão armazenados em memória na ordem inversa (Little Endian) e, portanto, o programa imprime os bytes na ordem inversa (como é um inteiro, são 4 bytes): 10, 27, 00, 00. Podemos chegar ao número 10000 ao observar que: (2×16³+7×16²) + (1×16¹+0 × 16⁰) = 10000
+
+1.b. Ao passar um ponteiro de char para a função dump, a função imprime o endereço de memória a que o ponteiro se refere, e imprime o valor em hexadecimal (representação ASCII) armazenado referente a este byte (char ocupa 1 byte em memória). Por exemplo: ao testarmos com o valor '1' obtemos 31, 'A' obtemos 41, 'B' obtemos 42, etc.
+
+1.c. Ao passar um ponteiro de short para a função dump, a função imprime, para os 2 bytes que o short ocupa, o endereço de memória e o valor em hexadecimal (representação ASCII) de cada um. Como a arquitetura usada pelo compilador é Intel (IA-32), os bytes estão armazenados em memória na ordem inversa (Little Endian) e, portanto, o programa imprime os bytes na ordem inversa. Por exemplo: ao testarmos com o valor 555 o programa imprime, primeiro 2b, e depois 02. 555 em hexadecimal, é a mesma coisa que 022b.
+
+1.d. 'a'  => 61
+     ' '  => 20
+     '\n' => 0a
+     '$'  => 24
+
+2. a. A função string2num recebe um vetor de caracteres *s. Para percorrer este vetor, a cada iteração, ela incrementa o endereço que o ponteiro *s aponta. A função subtrai o caractere '0' (30) do caractere que *s aponta em cada iteração, pois, como na tabela ASCII os caracteres numéricos estão ordenados, com essa subtração obtemos o valor numérico do caracter. Exemplo: '2' (32) - '0' (30) = 32 - 30 = 2. Após subtrair, a função soma esse valor ao valor armazenado na última iteração multiplicado por 10, de forma a atualizar a posição do algarismo, convertendo o vetor de caracteres para um número inteiro.
+
+2. b. 
+
+int string2num (char *s, int radix) {
+  int a = 0;
+  for (; *s; s++)
+    a = a*radix + (*s - '0');
+  return a;
+}
+
+2. c.
+
+int string2num (char *s, int radix) {
+  int a = 0;
+  for (; *s; s++) {
+   if(isalpha(*s)) a = a*radix + ((*s - 'a') + 10);
+   else a = a*radix + (*s - '0');
+  }
+  return a;
+}
+
+A maior base que podemos usar com este esquema é a base 36 (10 algarismos (0-9) + 26 letras (a-z)).

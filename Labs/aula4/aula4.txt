@@ -1,0 +1,46 @@
+1) 
+  A função dump recebe um ponteiro e seu tamanho em bytes, e exibe, para cada cada byte, o endereço onde esse byte está armazenado, e o seu valor em hexadecimal.
+  Para char c = 150, é exibido o valor de seu único byte, que corresponde a 96 em hexadecimal.
+  Para short s = -3, são exibidos os valores de seus 2 bytes, que estão armazenados na ordem inversa (IA-32/Little Endian): FD, FF, respectivamente. Podemos calcular este valor, ao obter o valor absoluto de 3 em binário (0000 0000 0000 0011), inverter e somar um (1111 1111 1111 1101), e converter cada byte para hexadecimal.
+  Para int i = -151, são exibidos os valores de seus 4 bytes, que estão armazenados na ordem inversa (IA-32/Little Endian): FF, FF, FF, 69, respectivamente. Podemos calcular este valor, ao obter o valor absoluto de 151 em binário (0000 0000 0000 0000 0000 0000 1001 0111), inverter e somar um (1111 1111 1111 1111 1111 1111 0110 1001), e converter cada byte para hexadecimal.
+
+Rascunho:
+dump de c: 
+char c => 1 byte: 150. Em Hexadecimal: 96
+
+Output:
+
+?ENDEREÇO? - 96
+
+
+dump de s:
+short s => 2 bytes: -3. Em binário, 3 = 0000 0011. Complemento a 2: -3 = 1111 1100 + 0x01 = 1111 1101
+
+Output:
+
+?ENDEREÇO? - FD
+?ENDEREÇO? - FF
+
+(impresso na ordem contrária, pois a arquitetura é IA-32, que é Little Endian)
+
+
+dump de i:
+int i => 4 bytes: -151. Em Hexadecimal, 151 = 97. 
+
+Calcular -97:
+  97 = 10010111
+  -97= 01101001
+
+Output:
+
+?ENDEREÇO? - 69
+?ENDEREÇO? - FF
+?ENDEREÇO? - FF
+?ENDEREÇO? - FF
+
+2) A função dump recebe um ponteiro e seu tamanho em bytes, e exibe, para cada cada byte, o endereço onde esse byte está armazenado, e o seu valor em hexadecimal.
+  Para short l = -32765, são exibidos os valores de seus 2 bytes, que estão armazenados na ordem inversa (IA-32/Little Endian): 03, 80, respectivamente. Podemos calcular este valor ao obter o valor absoluto de 32765 em binário (0111 1111 1111 1101), inverter e somar um (1000 0000 0000 0011), e converter cada byte para hexadecimal.
+  Para unsigned short k = 32771, são exibidos os valores de seus 2 bytes, que estão armazenados na ordem inversa (IA-32/Little Endian): 03, 80, respectivamente. Podemos calcular este valor simplesmente obtendo o valor em hexadecimal de 32771 (8003).
+  Podemos perceber que o valor armazenado na memória é o mesmo para os dois casos, no entanto, como um número é unsigned e o outro é signed (complemento à 2), a interpretação desses valores é feita de forma diferente.
+
+3) 

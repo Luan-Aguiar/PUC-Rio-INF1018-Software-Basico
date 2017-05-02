@@ -1,0 +1,21 @@
+1. Um inteiro possui 4 bytes. "b" é um vetor que possui 2 inteiros, portanto, 4*2 = 8 bytes ocupados.
+
+Um short possui 2 bytes, o array bi-dimensional a é 2x3, portanto, 2*3 = 6 posições * 2 bytes = 12 bytes. Eles são armazenados na mesma ordem dos elementos, no entanto, como a arquitetura utilizada (IA-32) é Little Endian, os valores de cada elemento do vetor estarão armazenados na ordem inversa.
+
+2. Tamanho dos tipos armazenados no struct: 4 bytes (int) + 4 bytes (int) + 2 bytes (short) + 4 bytes (int) = 14 bytes. Quando fazemos o dump do struct, podemos perceber que este ocupa 16 bytes. Isto ocorre pois os dados do struct são armazenados de forma alinhada: 4 bytes para a, 4 bytes para b, 2 bytes para c, 2 bytes de padding para poder colocar os 4 bytes de d alinhado em um múltiplo de 4.
+
+3. a) 1 byte para c1, 3 bytes de padding, 4 bytes para i, 1 para c2, 3 de padding final = 12 bytes no total
+
+b) 4 bytes para i, 1 byte para c, 3 bytes de padding. = 8 bytes no total
+
+c) 4 bytes para i, 1 byte para c1, 1 byte para c2, 2 bytes de padding = 8 bytes no total
+
+d) 8 bytes para x, 1 byte para c, 3 bytes de padding. = 12 bytes no total
+
+e) 1 byte para c1, 1 byte para c2, 1 byte para c3. = 3 bytes no total
+
+f) 2 bytes para sl, 2 bytes de padding, 4 bytes para i, 3 bytes para c, 1 byte de padding, 2 bytes para s2, 2 bytes de padding = 16 bytes no total
+
+g) 5 bytes + 3 bytes de padding (c é maior que i, com 5 bytes + padding para ser múltiplo de 4 (int)) = 8 bytes no total
+
+h) 5 bytes + 1 byte de padding (c é maior que s, com 5 bytes + padding para ser múltiplo de 2 (short)) = 6 bytes no total
